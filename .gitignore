@@ -1,3 +1,4 @@
 .idea/
 chromedriver
 cbbot.products/src/cbbot/products/Main.java
+out/
