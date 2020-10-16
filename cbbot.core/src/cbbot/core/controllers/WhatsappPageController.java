@@ -77,6 +77,17 @@ public class WhatsappPageController implements MessagingController {
 
 	@Override
 	public Message getLatestMessage() throws NotInitializedException {
+		/*
+		This method is NOT RELIABLE. The latest message holder found by the xpath query below
+		also displays the target's status, therefore, if the target is typing, the latest message
+		holder will not be holding the latest message, but, instead, the typing status, making this
+		method return null. This also makes it difficult for the implementation of reliable
+		timestamps.
+
+		This does not mean this method is unusable: if the target is an individual chat, it is very
+		likely that no issues will present; with group chats, as long as the message traffic is somewhat low
+		(no users typing simultaneously)
+		 */
 		if(!initialized)
 			throw new NotInitializedException();
 

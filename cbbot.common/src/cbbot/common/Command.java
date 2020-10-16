@@ -2,6 +2,7 @@ package cbbot.common;
 
 import javax.naming.NoPermissionException;
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.function.Function;
 
 public class Command implements Serializable {
@@ -28,4 +29,22 @@ public class Command implements Serializable {
 	public String getName() { return name; }
 	public String getUsage() { return usage; }
 	public String getDescription() { return description; }
+	public Function<Message, String> getFunction() { return function; }
+
+	@Override
+	public int hashCode() {
+		return function.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == this) return true;
+		if (!(obj instanceof Command)) return false;
+		return ((Command) obj).getFunction().equals(function);
+	}
+
+	@Override
+	public String toString() {
+		return String.format("Command Name: %s\n\tUsage: \t%s\n\tDescription: \t%s", name, usage, description);
+	}
 }

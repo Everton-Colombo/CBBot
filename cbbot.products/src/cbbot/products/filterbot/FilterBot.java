@@ -6,6 +6,7 @@ import cbbot.common.Message;
 import cbbot.common.RestrictedCommand;
 import cbbot.core.CBBot;
 import cbbot.core.MessagingController;
+import cbbot.util.MapUtils;
 
 import javax.naming.NoPermissionException;
 import java.io.*;
@@ -132,7 +133,7 @@ public class FilterBot extends CBBot {
 
 	public String rank(Message msg) {
 		say("*RANKING*");
-		for(Map.Entry<String, Integer> entry : sortByValue(faultCount).entrySet()) {
+		for(Map.Entry<String, Integer> entry : MapUtils.sortByValue(faultCount).entrySet()) {
 			say(String.format("@%s\t: %d mensagens inapropriadas;", entry.getKey(), entry.getValue()));
 		}
 
@@ -200,7 +201,7 @@ public class FilterBot extends CBBot {
 	}
 
 	public String showHierarchy(Message msg) {
-		for(Map.Entry<String, Integer> entry : sortByValue(hierarchy.getHierarchy()).entrySet()) {
+		for(Map.Entry<String, Integer> entry : MapUtils.sortByValue(hierarchy.getHierarchy()).entrySet()) {
 			say(String.format("@%s\tpossui nível %d de acesso;", entry.getKey(), entry.getValue()));
 		}
 
@@ -258,17 +259,5 @@ public class FilterBot extends CBBot {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-	}
-
-	private static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map) {
-		List<Map.Entry<K, V>> list = new ArrayList<>(map.entrySet());
-		list.sort(Map.Entry.comparingByValue());
-
-		Map<K, V> result = new LinkedHashMap<>();
-		for (Map.Entry<K, V> entry : list) {
-			result.put(entry.getKey(), entry.getValue());
-		}
-
-		return result;
 	}
 }

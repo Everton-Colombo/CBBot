@@ -1,5 +1,7 @@
 package cbbot.common;
 
+import java.util.Objects;
+
 public class Message {
 	private String content;
 	private String sender;
@@ -17,10 +19,18 @@ public class Message {
 		return String.format("<%s>: %s", sender, content);
 	}
 
-	public boolean equals(Message obj) {
-		if(obj == null)
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == this) return true;
+		if (!(obj instanceof Message)) {
 			return false;
+		}
+		Message msg = (Message) obj;
+		return Objects.equals(content, msg.getContent()) && Objects.equals(sender, msg.sender);
+	}
 
-		return content.equals(obj.getContent()) && sender.equals(obj.getSender());
+	@Override
+	public int hashCode() {
+		return Objects.hash(content, sender);
 	}
 }

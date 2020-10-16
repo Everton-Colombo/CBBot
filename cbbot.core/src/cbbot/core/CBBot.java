@@ -54,8 +54,6 @@ public abstract class CBBot {
 	}
 
 	public CommandResponse checkForAndExecuteCommands() throws NotInitializedException, CommandNotFoundException, NoPermissionException {
-		// Returns an Object[2] containing the command executed and its result
-
 		Message latestMessage = controller.getLatestMessage();
 		if(latestMessage != null && latestMessage.getContent().startsWith(preCommandChar)) {
 			Command command;

@@ -30,4 +30,9 @@ public class RestrictedCommand extends Command {
 
 	public Hierarchy getHierarchy() { return hierarchy; }
 	public void setHierarchy(Hierarchy hierarchy) { this.hierarchy = hierarchy; }
+
+	@Override
+	public String toString() {
+		return super.toString() + "\n\tRestriction Level: " + level;
+	}
 }
