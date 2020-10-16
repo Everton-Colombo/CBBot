@@ -32,12 +32,12 @@ public abstract class DualCBBot extends CBBot {
 		}
 	}
 
-	public Object[] checkForAndExecuteCommands(MessagingController controller) throws MessagingController.NotInitializedException, CommandNotFoundException, NoPermissionException {
+	public CommandResponse checkForAndExecuteCommands(MessagingController controller) throws MessagingController.NotInitializedException, CommandNotFoundException, NoPermissionException {
 		Message latestMessage = controller.getLatestMessage();
 		if(latestMessage != null && latestMessage.getContent().startsWith(preCommandChar)) {
 			Command command;
 			if((command = commandList.get(latestMessage.getContent().split(" ")[0].replace(preCommandChar, ""))) != null) {
-				return new Object[] { command, command.execute(latestMessage) };
+				return new CommandResponse(command, command.execute(latestMessage), latestMessage);
 			} else
 				throw new CommandNotFoundException();
 		}
