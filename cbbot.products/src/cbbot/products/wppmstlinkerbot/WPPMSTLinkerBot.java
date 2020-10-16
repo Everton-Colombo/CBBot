@@ -44,10 +44,9 @@ public class WPPMSTLinkerBot extends DualCBBot {
 	public void operate() {
 		while(true) {
 			try {
-				Object[] result = checkForAndExecuteCommands(controller2);
-				String a;
-				if(result != null && (a = (String) result[1]) != null && a.equals("err")) {
-					lastToMST = (Message) result[0];
+				CommandResponse result = checkForAndExecuteCommands(controller2);
+				if(result != null && result.getResponse() != null && result.getResponse().equals("err")) {
+					lastToMST = result.getAgentMessage();
 				}
 			} catch (MessagingController.NotInitializedException | NoPermissionException | CommandNotFoundException e) {
 				e.printStackTrace();
