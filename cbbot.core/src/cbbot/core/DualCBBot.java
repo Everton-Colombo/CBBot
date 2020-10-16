@@ -33,8 +33,6 @@ public abstract class DualCBBot extends CBBot {
 	}
 
 	public Object[] checkForAndExecuteCommands(MessagingController controller) throws MessagingController.NotInitializedException, CommandNotFoundException, NoPermissionException {
-		// Returns an Object[2] containing the command executed and its result
-
 		Message latestMessage = controller.getLatestMessage();
 		if(latestMessage != null && latestMessage.getContent().startsWith(preCommandChar)) {
 			Command command;
