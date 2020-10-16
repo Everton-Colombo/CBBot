@@ -14,14 +14,17 @@ public abstract class CBBot {
 	public static class CommandResponse {
 		private final Command commandExecuted;
 		private final String response;
+		private final Message agentMessage;
 
-		public CommandResponse(Command commandExecuted, String answer) {
+		public CommandResponse(Command commandExecuted, String answer, Message agentMessage) {
 			this.commandExecuted = commandExecuted;
 			this.response = answer;
+			this.agentMessage = agentMessage;
 		}
 
 		public Command getCommandExecuted() { return commandExecuted; }
 		public String getResponse() { return response; }
+		public Message getAgentMessage() { return agentMessage; }
 	}
 
 	protected MessagingController controller;
@@ -58,7 +61,7 @@ public abstract class CBBot {
 		if(latestMessage != null && latestMessage.getContent().startsWith(preCommandChar)) {
 			Command command;
 			if((command = commandList.get(latestMessage.getContent().split(" ")[0].replace(preCommandChar, ""))) != null) {
-				return new CommandResponse(command, command.execute(latestMessage));
+				return new CommandResponse(command, command.execute(latestMessage), latestMessage);
 			} else
 				throw new CommandNotFoundException();
 		}
