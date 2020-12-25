@@ -2,6 +2,8 @@ package cbbot.core.controllers;
 
 
 import cbbot.common.Message;
+import cbbot.common.exceptions.AlreadyInitializedException;
+import cbbot.common.exceptions.NotInitializedException;
 import cbbot.core.MessagingController;
 import org.openqa.selenium.*;
 
@@ -28,7 +30,7 @@ public class MSTeamsPageController implements MessagingController {
 	@Override
 	public void initialize(long waitTime) throws AlreadyInitializedException {
 		if(initialized)
-			throw new AlreadyInitializedException();
+			throw new AlreadyInitializedException("MSTeamsPageController");
 
 		driver.get(chatURL);
 		try {
@@ -50,7 +52,7 @@ public class MSTeamsPageController implements MessagingController {
 	@Override
 	public void terminate() throws NotInitializedException {
 		if(!initialized)
-			throw new NotInitializedException();
+			throw new NotInitializedException("MSTeamsPageController");
 
 		driver.close();
 	}
@@ -58,7 +60,7 @@ public class MSTeamsPageController implements MessagingController {
 	@Override
 	public void sendMessage(String message) throws NotInitializedException {
 		if(!initialized)
-			throw new NotInitializedException();
+			throw new NotInitializedException("MSTeamsPageController");
 
 		messageBar.sendKeys(message);
 		messageBar.sendKeys(Keys.RETURN);
@@ -67,7 +69,7 @@ public class MSTeamsPageController implements MessagingController {
 	@Override
 	public Message getLatestMessage() throws NotInitializedException {
 		if(!initialized)
-			throw new NotInitializedException();
+			throw new NotInitializedException("MSTeamsPageController");
 
 		List<WebElement> senders = driver.findElements(By.xpath("//div[@data-tid='threadBodyDisplayName']"));
 		WebElement latestSender = senders.get(senders.size() - 1);

@@ -2,6 +2,17 @@ package cbbot.common;
 
 import java.util.Objects;
 
+/**
+ * <p>Defines a message and holds its contents:</p>
+ * <ul>
+ *     <li>
+ *         <b>Content:</b> The message itself.
+ *     </li>
+ *     <li>
+ *         <b>Sender:</b> A {@link String} that identifies the message's sender.
+ *     </li>
+ * </ul>
+ */
 public class Message {
 	private String content;
 	private String sender;

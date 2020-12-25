@@ -1,4 +1,8 @@
 .idea/
 chromedriver
-cbbot.products/src/cbbot/products/Main.java
+cbbot.products/
 out/
+cbbot.core/src/cbbot/core/DualCBBot.java
+faults.bin
+hierarchy.bin
+wordlist.txt

@@ -3,4 +3,5 @@ module cbbot.common {
 	requires cbbot.util;
 
 	exports cbbot.common;
+	exports cbbot.common.exceptions;
 }
