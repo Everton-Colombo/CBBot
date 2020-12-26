@@ -28,7 +28,7 @@ Although the list is limited, it is fairly easy to create controllers for other 
 * A selenium Web Driver
 
 ### Installation
-Download the .jar file and use it in your project. Here: [<b>Releases</b>](https://github.com/Everton-Colombo/CBBot/releases/)
+Download the .jar file and use it in your project: [<b>releases</b>](https://github.com/Everton-Colombo/CBBot/releases/)
 
 
 ## Usage
