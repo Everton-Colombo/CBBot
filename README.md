@@ -28,9 +28,9 @@ Although the list is limited, it is fairly easy to create controllers for other 
 * A selenium Web Driver
 
 ### Installation
-[Download the .jar file here.](https://www.mediafire.com/file/ykqduat2fd0eg5s/CBBot.jar/file)
+Download the .jar file and use it in your project. Here: [RELEASES](https://github.com/Everton-Colombo/CBBot/releases/)
 
 
 ## Usage
-For creating a bot, create a class that extends from the CBBot abstract class.
-For creating a messaging controller, create a class that extends from the MessagingController interface.
+* For creating a bot, create a class that extends from the CBBot abstract class.
+* For creating a messaging controller, create a class that extends from the MessagingController interface.
